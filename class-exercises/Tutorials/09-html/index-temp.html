@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submission Forms</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<main>
+
+
+    <form action="sucess.html" method="get">
+        <!--Name-->
+        <label>
+            Name    
+            <input name="name" type="text"> 
+        </label>
+         <!--Email-->
+        <label>
+            Email
+            <input name="email" type="email" required placeholder="me@example.com">
+        </label>
+         <!--Password-->
+        <label>
+            Password
+            <input name="password" type="password" required placeholder="abc123">
+        </label>
+         <!--Search-->
+        <label>
+            Search
+            <input name="search" type="search" placeholder="&#128269">
+        </label>
+         <!--Phone Number-->
+        <label>
+            Phone Number
+            <input name="phone" type="tel" required placeholder="777-777-7777">
+        </label>
+         <!--Text Area-->
+        <label>
+            Text Area
+            <textarea name="textarea" cols="30" rows="15"></textarea>
+        </label>
+         <!--Date-->
+        <label>
+            Date
+            <input name="date" type="date">
+        </label>
+         <!--Color-->
+        <label>
+            Color
+            <input name="color" type="color">
+        </label>
+         <!--File-->
+        <label>
+            File
+            <input name="file" type="file" accept="image/*" multiple>
+        </label>
+         <!--Checkbox-->
+        <label>
+            Checkbox
+            <input name="simplecheckbox" value="The checkbox is checked" type="checkbox" checked>
+        </label>
+         <!--selectlist-->
+         <label>
+            <select name="selectlist">
+              Choose one
+              <option>First option</option>
+              <option>Second option</option>
+              <option>Third option</option>
+             </select>
+         </label>
+          <!--fieldset of checkboxes-->
+         <fieldset>
+            <legend>Checkboxes in a fieldset</legend>
+            <input id="thischeck" name="checkboxlist" type="checkbox" value="This" checked>
+            <label for="thischeck">This</label>
+            <input = id="orcheck" name="checkboxlist" type="checkbox" value="And Or">
+            <label for="orcheck">And</label>
+         </fieldset>
+        <button type="submit"> Sign up</button>
+    </form>
+
+</main>
+</body>
+</html>
