@@ -99,6 +99,14 @@ footer a:hover{
     background: #c7f9cc;
     padding: 30px;
 }
+@media screen and (max-width: 650px){
+    .home .content-wrapper{
+        padding:10px;
+    }
+    .content-bg{
+        padding: 20px;
+    }
+}
 
 /*RESUME
 -----------------------------*/
@@ -121,9 +129,23 @@ footer a:hover{
     left: 5px;
     font-size: 1.5rem;
 }
-
-/* Profile
------------------------------*/
+@media screen and (max-width: 1200px)
+{
+    .download-link{
+        position:absolute;
+    }
+}
+@media screen and (max-width: 500px){
+    .resume header::before{
+        height:200px;
+    }
+    h1{
+        font-size: 5rem;
+    }
+    h2{
+        font-size:2.6rem;
+    }
+}
 
 
 /* Projects
@@ -137,6 +159,35 @@ footer a:hover{
     float: left;
     margin-right: 20px; 
 }
+@media screen and (min-width:900px)
+{
+    .project-item{
+        display: flow-root;
+    }
+    .project-item img{
+        float: left;
+        margin-right: 20px; 
+    }
+}
+@media screen and (min-width:650px) and (max-width:899px)
+{
+    .project-wrapper{
+        display: grid;
+        grid-template-columns:repeat(2, 1fr);
+        column-gap: 20px;
+    }
+    .project-item img{
+        width: 100%;
+    }
+}
+
+@media screen and (max-width:500px)
+{
+    .project-item img{
+        width:100%;
+        margin-bottom:10px;
+    }
+}
 
 /* Work Experience
 -----------------------------*/
@@ -149,8 +200,16 @@ footer a:hover{
 .work-details p{
     margin: 0;
 }
-.work-summary p:first-child{
-    margin-top:0;
+
+@media screen and (min-width:860px){
+    .work-item{
+        display: grid;
+        grid-template-columns: 300px 1fr;
+        column-gap: 20px;
+    }
+    .work-summary p:first-child{
+        margin-top:0;
+    }
 }
 
 /* Education
@@ -185,4 +244,18 @@ footer{
 }
 .socials img:hover{
     opacity: 0.5;
+}
+
+@media screen and (min-width: 900px){
+    footer {
+        display: flex;
+        justify-content: space-between;
+        padding: 0 20px;
+    }
+}
+@media screen and (max-width: 899px){
+    footer{
+        text-align: center;
+        padding: 10px;
+    }
 }
