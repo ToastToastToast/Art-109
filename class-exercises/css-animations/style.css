@@ -1,0 +1,37 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    /* 62.5% of 16px user agent font size is 10px */
+    font-size: 62.5%;
+
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+body {
+    background-color: aliceblue;
+}
+
+@keyframes stretching {
+    0% {
+        width: 100px;
+    }
+
+    100% {
+        width: 200px;
+    }
+}
+
+
+.button {
+    background-color: aquamarine;
+    display:inline-block;
+    animation-name: stretching;
+    animation-duration: 4s;
+}
