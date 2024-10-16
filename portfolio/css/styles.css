@@ -1,9 +1,9 @@
 /*
-Light Green c7f9cc
-Grass Green 80ed99
-Hill Green 57cc99
-Aquamarine 38a3a5
-Blueish green 22577a
+Light Green #c7f9cc
+Grass Green #80ed99
+Hill Green #57cc99
+Aquamarine #38a3a5
+Blueish green #22577a
 */
 
 /* GLOBAL STYLES 
@@ -151,8 +151,16 @@ footer a:hover{
 /* Projects
 -----------------------------*/
 .project-item{
+    transform: translateX(-250px);
+    opacity: 0;
+    transition: opacity 1.5s, transform 1.5s;
     display: flow-root;
     margin: 30px 0;
+}
+
+.project-item.slide-in{
+    opacity: 1;
+    transform: translateX(0);
 }
 .project-item img{
     width:300px;
