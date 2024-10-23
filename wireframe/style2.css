@@ -1,0 +1,82 @@
+}
+margin: 0;
+padding: 0;
+font-family: 'Courier Prime', monospace;
+}
+.wrapper{
+width: 1170px;
+margin: auto; 
+}
+/* Navbar */
+.navbar{
+display:flex;
+justify-content: center;
+align-items: center;
+background-color: rgba(0,0,0,0.5);
+position: sticky;
+top: 0;
+}
+.navbar ul{
+display: flex;
+list-style: none;
+margin:20px 0px;
+}
+.navbar ul li{
+font-family: century;
+font-size: 1.1rem;
+font-weight: bold;
+}
+.navbar ul li a{
+text-decoration: none;
+color: white;
+padding:8px 25px;
+transition: all .5s ease;
+}
+.navbar ul li a:hover{
+background-color: white;
+color: black;
+box-shadow: 0 0 10px white;
+}
+
+.logo img{
+width: 175px;
+float: left;
+padding-left: -10%;
+padding-top: 0%;
+filter:invert(0);
+}
+.welcome-text{
+position:absolute;
+margin:20% 30%;
+text-align: center;
+}
+.welcome-text h1{
+text-align: center;
+color:#FFFFFF;
+text-transform: uppercase;
+font-size:60;
+}
+.welcome-text a{
+border: 1px solid #fff;
+padding:10px 25px;
+text-decoration: none;
+text-transform: uppercase;
+font-size: 14px;
+margin-top: 20px;
+display: inline-block;
+color: #fff;
+}
+.welcome-text a:hover{
+background: #fff;
+color: #333;
+}
+.welcome-text p{
+color: #fff;
+}
+.body{
+background: url("images/street.png);
+height:100vh;
+background-size:cover;
+background-position:center center;
+position:relative;
+
