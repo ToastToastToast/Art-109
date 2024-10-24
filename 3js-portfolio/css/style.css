@@ -1,0 +1,8 @@
+html {
+    box-sizing: border-box;
+    font-size: 62.5%; /*set default font to 10px;}*/
+    }
+
+  *, *:before, *:after {
+    box-sizing: inherit;
+  }

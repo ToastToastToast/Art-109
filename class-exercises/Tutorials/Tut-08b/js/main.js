@@ -10,8 +10,18 @@ import { OrbitControls } from 'https://unpkg.com/three@0.162.0/examples/jsm/cont
 import { GLTFLoader } from 'https://unpkg.com/three@0.162.0/examples/jsm/loaders/GLTFLoader.js'; // to load 3d models
 
 
+// ~~~~~~~~~~~~ Global Variables ~~~~~~~~~~~~~~~~~~~~~
 let scene, camera, renderer, cube, capsule, log;
 let sceneContainer = document.querySelector("#scene-container");
+
+
+//for animations 
+let mixer; 
+const clock = new THREE.Clock();
+let actionFlap;
+
+
+// ~~~~~~~~~~~~~~ Intialize function ~~~~~~~~~~~~~~~~~
 
 function init(){
 // ~~~~~~~~~~~~~~~~Create scene here~~~~~~~~~~~~~~~~
@@ -31,7 +41,7 @@ camera = new THREE.PerspectiveCamera(75,sceneContainer.clientWidth / sceneContai
 
 renderer = new THREE.WebGLRenderer({antialias: true });
 renderer.setSize(sceneContainer.clientWidth, sceneContainer.clientHeight);
-//renderer.setAnimationLoop( animate );
+
 
 
 //Geometry 
@@ -64,11 +74,16 @@ function onWindowResize(){
 
 window.addEventListener('resize', onWindowResize, false);
 
+
+
+//call the initialize methods
 init();
 animate();
-// ~~~~~~~~~~~~~~~~ Initiate add-ons ~~~~~~~~~~~~~~~~
+
+// ~~~~~~~~~~~~~~~~ added models ~~~~~~~~~~~~~~~~
 const controls = new OrbitControls(camera, renderer.domElement);
- const loader = new GLTFLoader(); // to load 3d models
+
+const loader = new GLTFLoader(); // to load 3d models
 
 loader.load('log.glb', function (gltf){
     log = gltf.scene;
@@ -82,11 +97,74 @@ loader.load('tree2.glb', function (gltf){
     tree.position.set(-5, 0, 0);
     scene.add(tree);
 })
-// →→→→→→ Follow next steps in tutorial: // https://threejs.org/docs/#manual/en/introduction/Creating-a-scene
+
+loader.load('red-robin.glb', function (gltf){
+    const redRobin = gltf.scene;
+    redRobin.position.set(0, -5, -25);
+    redRobin.scale.set(20,20,20);
+    scene.add(redRobin);
+
+
+    mixer = new THREE.AnimationMixer(redRobin);
+    const clips = gltf.animations; //holding animations from glb with object var
+    
+    // load + play animation
+    
+    //Earlier Example 
+    //const clipFlap = THREE.AnimationClip.findByName(clips, "Idle"); //select which animation we want
+    //const actionFlap = mixer.clipAction(clipFlap); //convert clip to playable action for us
+    //actionFlap.play();//call play on the action
+    
+    const clipFlap = THREE.AnimationClip.findByName(clips, "Idle");
+    actionFlap = mixer.clipAction(clipFlap); 
+   
+
+
+    //playing all the actions at once
+    /*clips.forEach(function(clip) {
+        const action = mixer.clipAction(clip);
+        action.play();
+    })*/
+    
+})
+
+// ~~~~~~~~~~~~~~~ Event Listener ~~~~~~~~~~~~~~~~
+
+let mouseIsDown = false;
+
+document.querySelector("body").addEventListener("mousedown", () => {
+    actionFlap.play();
+    actionFlap.paused = false;
+    mouseIsDown = true;
+})
+
+document.querySelector("body").addEventListener("mouseup", () => {
+    actionFlap.paused = true;
+    mouseIsDown = false;
+    //or actionFlap.stop()
+})
+
+document.querySelector("body").addEventListener("mousemove", () => {
+    actionFlap.paused = true;
+    if(mouseIsDown){
+
+    }
+    //or actionFlap.stop()
+})
 
 
 function animate() {
+    //Get the time passed since the last frame
+    const deltaTime = clock.getDelta();
+    
+    //necessary if statement because the load is asychonous so mixer needs to be fulfilled before actually calling it.
+    if(mixer){
+        mixer.update(deltaTime);
+    }
+
     requestAnimationFrame(animate);
+    //mixer.update(clock.getDelta()); //handles looping the animation
+    
 
 	cube.rotation.x += 0.007;
 	cube.rotation.y += 0.007;
@@ -94,15 +172,16 @@ function animate() {
     cube.position.x = Math.sin(Date.now() / 2000) * 4;
     cube.position.x = Math.sin(Date.now() / 4000) * 4;
     cube.position.x = Math.sin(Date.now() / 5000) * 4;
-    console.log(cube.position.x);
+ 
 
     if(log){
-        log.rotation.x += 0.007;
-        log.rotation.y += 0.007;
+        log.rotation.x += 0.0007;
+        log.rotation.y += 0.0007;
         log.rotation.z = Math.sin(Date.now() / 4000) * 4;
     }
   
 
 	renderer.render( scene, camera );
-
 }
+
+//renderer.setAnimationLoop( animate );
